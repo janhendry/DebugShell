@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+	font-family: Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] {
+	--color: #000;
+	--bg: #fff;
+	--bg-input: #fff;
+	--paper: #f0f0f0;
+	--paper-hover: #e0e0e0;
+	--paper-selected: #6d8bc2;
+	--text-primary: #000;
+	--text-secondary: #565656;
+	--divider: #3a3a3a;
+	--monaco-bg: #fff;
+}
+
+[data-theme="dark"] {
+	--color: #fff;
+	--bg: #111;
+	--bg-input: #373737;
+	--paper: #1e1e1e;
+	--paper-hover: #3a3a3a;
+	--paper-selected: #3a65b6;
+    --paper-selected-hover: #3a65b6e9;
+	--text-primary: #b8b8b8;
+	--text-secondary: #7a7a7a;
+	--divider: #3a3a3a;
+    --monaco-bg: #1e1e1e;
+}
