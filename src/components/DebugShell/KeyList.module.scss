@@ -1,19 +1,19 @@
 .list-item {
   cursor: pointer;
-  background-color: var(--paper);
+  background-color: var(--debug-shell-paper);
   white-space: nowrap;
   overflow: 'hidden';
   padding: 10px !important;
 
   &:hover {
-    background-color: var(--paper-hover);
+    background-color: var(--debug-shell-paper-hover);
   }
 
   &-selected {
-    background-color: var(--paper-selected);
+    background-color: var(--debug-shell-paper-selected);
 
     &:hover {
-      background-color: var(--paper-selected-hover);
+      background-color: var(--debug-shell-paper-selected-hover);
     }
   }
 }
