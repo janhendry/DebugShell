@@ -1,8 +1,26 @@
-# `DebugShell` debugging tool to track and visualize state and events in React applications
+# `DebugShell`
 
-`DebugShell` is a debugging tool for Web applications that helps developers easily track and visualize state and event data in the development process.
+A debugging tool for Web applications that helps developers easily track and visualize state and event data in the development process.
 
 ![img](./DebugShell.png)
+
+---
+
+## API Overview
+
+### Components
+
+| Component              | Description                                                                |
+|------------------------|----------------------------------------------------------------------------|
+| `<DebugShell />`        | Component                            |
+| `<DebugShellSidePanel>` | Wrapper Component                 |
+
+### Hooks and Functions
+
+| API              | Description                                                                                      |
+|------------------|--------------------------------------------------------------------------------------------------|
+| `useDebugValue`  | Hook for tracking state.                                        |
+| `debugValue`     | Function for tracking events.                               |
 
 ---
 
@@ -10,7 +28,7 @@
 
 ### Side Panel Integration
 
-Wrap your application with `<DebugShellSidePanel>` to enable a debugging side panel:
+Wrap your application with `<DebugShellSidePanel>` to enable the debug shell as side panel:
 
 ```tsx
 import React from 'react';
@@ -29,7 +47,7 @@ const App = () => {
 
 ### Component Integration
 
-Add a debug Shell anywhere in your app to render JSON or any state for debugging purposes:
+Integrate the `<DebugShell>` as component in your app:
 
 ```tsx
 import React from 'react';
@@ -55,7 +73,7 @@ const App = () => {
 
 ### Hook for State Tracking
 
-Use the `useDebugValue` hook to track specific state values in your app:
+To monitor state, use the `useDebugValue` hook:
 
 ```tsx
 import React from 'react';
@@ -76,9 +94,9 @@ const MyComponent = () => {
 
 ---
 
-### Function for Logging Custom Data
+### Function for Event Tracking
 
-Use the `debugValue` function to log specific events or custom data for debugging:
+To monitor events, use the `debugValue' function:
 
 ```tsx
 import React from 'react';
@@ -97,8 +115,8 @@ const MyComponent = () => {
 ### **Key Features**
 
 - **State and Event Tracking:**
-  - Use `useDebugValue` to monitor and log component state.
-  - Use `debugValue` to log custom events and data.
+  - Use `useDebugValue` to monitor component state.
+  - Use `debugValue` to monitor events.
 - **Developer-Friendly:** Easy to integrate, no changes to your app's structure.
 
 ---
@@ -108,23 +126,5 @@ const MyComponent = () => {
 ```bash
 npm install debug-shell
 ```
-
----
-
-### **API Overview**
-
-#### **Components**
-
-| Component              | Description                                                                |
-|------------------------|----------------------------------------------------------------------------|
-| `<DebugShell />`        | Component                            |
-| `<DebugShellSidePanel>` | Wrapper Component                       |
-
-#### **Hooks and Functions**
-
-| API              | Description                                                                                      |
-|------------------|--------------------------------------------------------------------------------------------------|
-| `useDebugValue`  | Hook for tracking state.                                        |
-| `debugValue`     | Function for logging custom data or events to the debugging tool.                               |
 
 ---
