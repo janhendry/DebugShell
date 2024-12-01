@@ -47,7 +47,7 @@ const App = () => {
 
 ### Component Integration
 
-Integrate the `<DebugShell>` as component in your app:
+Integrate the `<DebugShell>` as component in your app. You dont need a wrapper component for this:
 
 ```tsx
 import React from 'react';
@@ -60,10 +60,17 @@ const App = () => {
     email: 'test@test.com',
   };
 
+  const handleClick = (event) => {
+    debugValue('onClickEvent', event);
+  };
+
+  useDebugValue('userState', userState);
+
   return (
     <div>
       <h1>Welcome to the App</h1>
-      <DebugShell json={userState} />
+      <button onClick={handleClick}>Click Me</button>
+      <DebugShell />
     </div>
   );
 };
@@ -117,7 +124,7 @@ const MyComponent = () => {
 - **State and Event Tracking:**
   - Use `useDebugValue` to monitor component state.
   - Use `debugValue` to monitor events.
-- **Developer-Friendly:** Easy to integrate, no changes to your app's structure.
+- **Developer-Friendly:** Easy to integrate, no changes to your app's structure. No provider or context required.
 
 ---
 
