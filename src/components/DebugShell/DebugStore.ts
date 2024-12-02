@@ -14,7 +14,7 @@ export const $debugStoreKeys = computed($debugStore, store => Object.keys(store)
 
 export const $selectedKey = atom<string | undefined>(undefined)
 
-export const $selectedValue = computed($selectedKey, key => {
+export const $selectedValue = computed([$selectedKey, $debugStore], key => {
     return key !== undefined ? JSON.stringify( $debugStore.get()[key], null, 2) : ''
 })
 
