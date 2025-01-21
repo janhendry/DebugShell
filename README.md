@@ -10,17 +10,17 @@ A debugging tool for Web applications that helps developers easily track and vis
 
 ### Components
 
-| Component              | Description                                                                |
-|------------------------|----------------------------------------------------------------------------|
-| `<DebugShell />`        | Component                            |
-| `<DebugShellSidePanel>` | Wrapper Component                 |
+| Component               | Description       |
+| ----------------------- | ----------------- |
+| `<DebugShell />`        | Component         |
+| `<DebugShellSidePanel>` | Wrapper Component |
 
 ### Hooks and Functions
 
-| API              | Description                                                                                      |
-|------------------|--------------------------------------------------------------------------------------------------|
-| `useDebugValue`  | Hook for tracking state.                                        |
-| `debugValue`     | Function for tracking events.                               |
+| API             | Description                   |
+| --------------- | ----------------------------- |
+| `useDebugValue` | Hook for tracking state.      |
+| `debugValue`    | Function for tracking events. |
 
 ---
 
@@ -31,16 +31,16 @@ A debugging tool for Web applications that helps developers easily track and vis
 Wrap your application with `<DebugShellSidePanel>` to enable the debug shell as side panel:
 
 ```tsx
-import React from 'react';
-import { DebugShellSidePanel } from 'debug-shell';
+import React from 'react'
+import { DebugShellSidePanel } from 'debug-shell'
 
 const App = () => {
   return (
     <DebugShellSidePanel>
       <YourApp />
     </DebugShellSidePanel>
-  );
-};
+  )
+}
 ```
 
 ---
@@ -50,21 +50,21 @@ const App = () => {
 Integrate the `<DebugShell>` as component in your app. You dont need a wrapper component for this:
 
 ```tsx
-import React from 'react';
-import { DebugShell } from 'debug-shell';
+import React from 'react'
+import { DebugShell } from 'debug-shell'
 
 const App = () => {
   const userState = {
     name: 'TestUser',
     age: 23,
     email: 'test@test.com',
-  };
+  }
 
   const handleClick = (event) => {
-    debugValue('onClickEvent', event);
-  };
+    debugValue('onClickEvent', event)
+  }
 
-  useDebugValue('userState', userState);
+  useDebugValue('userState', userState)
 
   return (
     <div>
@@ -72,8 +72,8 @@ const App = () => {
       <button onClick={handleClick}>Click Me</button>
       <DebugShell />
     </div>
-  );
-};
+  )
+}
 ```
 
 ---
@@ -83,20 +83,20 @@ const App = () => {
 To monitor state, use the `useDebugValue` hook:
 
 ```tsx
-import React from 'react';
-import { useDebugValue } from 'debug-shell';
+import React from 'react'
+import { useDebugValue } from 'debug-shell'
 
 const MyComponent = () => {
   const userState = {
     name: 'TestUser',
     age: 23,
     email: 'test@test.com',
-  };
+  }
 
-  useDebugValue('userState', userState);
+  useDebugValue('userState', userState)
 
-  return <p>Name: {userState.name}</p>;
-};
+  return <p>Name: {userState.name}</p>
+}
 ```
 
 ---
@@ -106,17 +106,17 @@ const MyComponent = () => {
 To monitor events, use the `debugValue' function:
 
 ```tsx
-import React from 'react';
-import { debugValue } from 'debug-shell';
+import React from 'react'
+import { debugValue } from 'debug-shell'
 
 const MyComponent = () => {
   const handleClick = (event) => {
-    debugValue('onClickEvent', event);
-    alert('Button clicked!');
-  };
+    debugValue('onClickEvent', event)
+    alert('Button clicked!')
+  }
 
-  return <button onClick={handleClick}>Click Me</button>;
-};
+  return <button onClick={handleClick}>Click Me</button>
+}
 ```
 
 ### **Key Features**

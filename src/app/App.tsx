@@ -1,5 +1,6 @@
 import { DebugShellSidePanel } from '../main'
 import { DebugTest } from './DebugTest'
+import './App.css'
 
 function App() {
   return (

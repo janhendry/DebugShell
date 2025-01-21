@@ -5,7 +5,7 @@ import { Allotment, LayoutPriority } from 'allotment'
 import { CodeEditor } from '../CodeEditor/CodeEditor'
 import { App as AntdApp, ConfigProvider, theme } from 'antd'
 import type { ThemeConfig } from 'antd'
-import './../main.css'
+import style from './DebugShell.module.css'
 import 'allotment/dist/style.css'
 
 const antdThemeConfig: ThemeConfig = {
@@ -18,6 +18,7 @@ export function DebugShell() {
   return (
     <ConfigProvider theme={antdThemeConfig}>
       <AntdApp
+        className={style.app}
         style={{
           height: '100%',
           width: '100%',
