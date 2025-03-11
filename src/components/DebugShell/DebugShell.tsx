@@ -38,7 +38,7 @@ export function DebugShell() {
           <Allotment.Pane>
             <CodeEditor
               code={value}
-              readOnly
+              // readOnly
             />
           </Allotment.Pane>
         </Allotment>
