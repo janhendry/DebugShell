@@ -15,7 +15,7 @@ export type CodeDiffEditorProps = Readonly<{
 	options?: editor.IDiffEditorConstructionOptions;
 }>;
 
-export function CodeDiffEditor({
+export default function CodeDiffEditor({
 	language,
 	className,
 	onSave,

@@ -408,7 +408,6 @@ terms above.
 The following npm packages may be included in this product:
 
  - @ant-design/icons-svg@4.4.2
- - dot-prop-immutable@2.1.1
  - toggle-selection@1.0.6
 
 These packages each contain the following license:
@@ -1334,7 +1333,6 @@ THE SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @nanostores/persistent@0.10.2
  - @nanostores/react@0.8.4
  - nanostores@0.11.4
 

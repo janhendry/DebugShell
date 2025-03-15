@@ -16,7 +16,7 @@ export type CodeEditorProps = Readonly<{
 	options?: editor.IStandaloneEditorConstructionOptions;
 }>;
 
-export function CodeEditor({
+export default function CodeEditor({
 	className,
 	code,
 	path,

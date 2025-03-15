@@ -1,6 +1,6 @@
 {
 	"name": "debug-shell",
-	"version": "0.0.0-alpha.2",
+	"version": "0.0.0-alpha.2.1",
 	"type": "module",
 	"description": "A debugging tool for React applications to track and visualize state and event data",
 	"author": "Jan Anstipp",
@@ -32,7 +32,7 @@
 		"check": "biome check --write",
 		"preview": "vite preview",
 		"build": "vite build",
-		"prepublishOnly": "bun run build",
+		"prepublishOnly": "biome check && bun run build",
 		"generate-license": "npx generate-license-file --input package.json --output third-party-licenses.txt --overwrite"
 	},
 	"module": "./dist/main.js",
