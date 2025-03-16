@@ -13,18 +13,7 @@
 	"bugs": {
 		"url": "https://github.com/janhendry/DebugShell/issues"
 	},
-	"keywords": [
-		"react",
-		"debugging",
-		"state",
-		"event tracking",
-		"developer tools",
-		"monaco editor",
-		"nanostores",
-		"dev tool",
-		"debug",
-		"json"
-	],
+	"keywords": ["react", "debugging", "state", "event tracking", "developer tools", "monaco editor", "nanostores", "dev tool", "debug", "json"],
 	"scripts": {
 		"dev": "vite",
 		"lint": "biome lint",

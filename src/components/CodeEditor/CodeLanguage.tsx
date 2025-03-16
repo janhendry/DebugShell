@@ -13,4 +13,4 @@ export type CodeLanguage =
 	| "yml"
 	| "shell"
 	| "sh"
-	| "markdown";
+	| "markdown"
