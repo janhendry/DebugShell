@@ -1,46 +1,32 @@
-import { useStore } from "@nanostores/react"
-import { Allotment, LayoutPriority } from "allotment"
-import { App as AntdApp, ConfigProvider, Spin, theme } from "antd"
-import type { ThemeConfig } from "antd"
-import styles from "./DebugShell.module.css"
-import { KeyList } from "./KeyList"
+import { Allotment } from "allotment"
+import { DebugShellWidget } from "./DebugShellWidget"
+import { handleResize, useLocalAppState } from "./localAppState"
+
 import "allotment/dist/style.css"
-import { Suspense, lazy } from "react"
-import { $selectedValue } from "../../lib/subscriptions"
-import { useDebug } from "../../main"
-import { $debugShellStore, handleResize } from "./debugShellStore"
+import "./theme.css"
 
-const CodeEditor = lazy(() => import("../CodeEditor/CodeEditor"))
-
-const antdThemeConfig: ThemeConfig = {
-	algorithm: theme.darkAlgorithm,
+export type DebugShellProps = {
+	children?: React.ReactNode
 }
 
-export function DebugShell() {
-	const { appPanelSize } = useStore($debugShellStore)
-	useDebug("aap", appPanelSize)
-	const value = useStore($selectedValue)
+/**
+ * Debug shell for debugging state, stores, and events.
+ *
+ * This component is used to render the debug shell. When no children are provided, it will render the debug shell widget. When children are provided, it will render the debug shell as a split view with the children in the main pane.
+ */
+export function DebugShell({ children }: Readonly<DebugShellProps>) {
+	const { sidePanelSize } = useLocalAppState()
+
+	if (!children) {
+		return <DebugShellWidget />
+	}
 
 	return (
-		<ConfigProvider theme={antdThemeConfig}>
-			<AntdApp className={styles.DebugShell}>
-				<Allotment defaultSizes={appPanelSize} vertical={false} proportionalLayout={false} onDragEnd={handleResize("appPanel")}>
-					<Allotment.Pane priority={LayoutPriority.Low} preferredSize={200}>
-						<KeyList />
-					</Allotment.Pane>
-					<Allotment.Pane>
-						<Suspense
-							fallback={
-								<div className={styles.spinner}>
-									<Spin />
-								</div>
-							}
-						>
-							<CodeEditor code={value ?? ""} readOnly />
-						</Suspense>
-					</Allotment.Pane>
-				</Allotment>
-			</AntdApp>
-		</ConfigProvider>
+		<div style={{ display: "flex", height: "100vh", width: "100vw" }}>
+			<Allotment vertical={false} defaultSizes={sidePanelSize} onDragEnd={handleResize("sidePanel")}>
+				<Allotment.Pane>{children}</Allotment.Pane>
+				<Allotment.Pane preferredSize={200}>{<DebugShellWidget />}</Allotment.Pane>
+			</Allotment>
+		</div>
 	)
 }

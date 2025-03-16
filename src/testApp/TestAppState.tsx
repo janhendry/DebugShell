@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { useDebug } from "../lib/api"
+import { useDebug } from "../main"
 
-export function DebugTest() {
+export function AppState() {
 	const [userState] = useState({
 		name: "TestUser",
 		age: 23,
 		email: "test#test.com",
-		phone: "1234567890",
+		phone: "01234567890",
 		address: "Test Address",
 		city: "Test City",
 		state: "Test State",
@@ -15,5 +15,5 @@ export function DebugTest() {
 
 	useDebug("userState", userState)
 
-	return false
+	return null
 }

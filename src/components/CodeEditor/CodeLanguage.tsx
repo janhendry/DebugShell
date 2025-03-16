@@ -4,7 +4,6 @@ export type CodeLanguage =
 	| "javascript"
 	| "dockerfile"
 	| "plaintext"
-	| "markdown"
 	| "html"
 	| "css"
 	| "xml"

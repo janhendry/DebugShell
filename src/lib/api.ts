@@ -4,26 +4,32 @@ import { useEffect } from "react"
 import { $hookRegistry, $plainValueRegistry, $selectedEntry, $selectedHookValue, $storeRegistry } from "./registry"
 
 /**
- * Registriert einen Nanostore für Debugging-Zwecke.
+ * Debug a store.
+ *
+ * @param key Key to identify value
+ * @param store Store to debug
  */
 export function debugStore(key: string, store: Store<unknown>): void {
 	$storeRegistry.setKey(key, store)
 }
 
 /**
- * Speichert einen plain Debug-Wert.
+ * Debug a event value.
+ *
+ * @param key Key to identify value
+ * @param event Event to debug
  */
-export function debug(key: string, value: unknown) {
-	$plainValueRegistry.setKey(key, value)
+export function debug(key: string, event: unknown) {
+	$plainValueRegistry.setKey(key, event)
 }
 
 /**
- * React-Hook zum Registrieren eines Debug-Schlüssels (vom Typ "hook").
+ * Debug a state value.
  *
- * @param key - Der Debug-Schlüssel.
- * @param value - Der zu überwachende Wert.
+ * @param key Key to identify value
+ * @param state State to debug
  */
-export function useDebug(key: string, value: unknown) {
+export function useDebug(key: string, state: unknown) {
 	const selectedEntry = useStore($selectedEntry)
 	useEffect(() => {
 		if (key) {
@@ -31,11 +37,11 @@ export function useDebug(key: string, value: unknown) {
 		}
 
 		if (selectedEntry && selectedEntry.key === key) {
-			$selectedHookValue.set(value)
+			$selectedHookValue.set(state)
 		}
 
 		return () => {
 			$hookRegistry.set($hookRegistry.get().filter(k => k !== key))
 		}
-	}, [key, value, selectedEntry])
+	}, [key, state, selectedEntry])
 }

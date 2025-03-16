@@ -1,5 +1,3 @@
 export { DebugShell } from "./components/DebugShell/DebugShell"
+export type { DebugShellProps } from "./components/DebugShell/DebugShell"
 export { useDebug, debug, debugStore } from "./lib/api"
-export { DebugShellSidePanel } from "./components/DebugShell/DebugShellSidePanel"
-export type { DebugShellSidePanelProps } from "./components/DebugShell/DebugShellSidePanel"
-import "./theme.css"

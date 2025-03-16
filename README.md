@@ -6,9 +6,9 @@ A debugging tool for Web applications that helps developers easily track and vis
 
 ---
 
-## Key Features
+## Key features
 
-- **State and Event Tracking:**
+- **State and event tracking:**
   - Use `useDebug` to monitor component state.
   - Use `debug` to monitor events.
   - Use `debugStore` to monitor `stores` for [nanostores](https://github.com/nanostores/nanostores).
@@ -19,12 +19,12 @@ A debugging tool for Web applications that helps developers easily track and vis
 ## Installation
 
 ```bash
-npm install debug-shell@0.0.0-alpha.2.1
+npm install debug-shell@0.0.0-alpha.3.1
 ```
 
-## How to Use
+## How to use
 
-### Side Panel Integration
+### Side panel integration
 
 Wrap your application with `<DebugShell>` to enable the debug shell as side panel:
 
@@ -40,9 +40,10 @@ function App() {
   );
 };
 ```
+
 ---
 
-### Component Integration
+### Component integration
 
 Integrate the `<DebugShell>` as component in your app. You can place it anywhere in your app:
 
@@ -65,7 +66,7 @@ function App(){
 
 ---
 
-### `useDebug` for State Tracking
+### `useDebug` for state tracking
 
 To monitor state, use the `useDebug` hook:
 
@@ -88,7 +89,7 @@ function MyComponent() {
 
 ---
 
-### `debugValue` for Event Tracking
+### `debugValue` for event tracking
 
 To monitor events, use the `debugValue` function:
 
@@ -125,13 +126,14 @@ debugStore('counterStore', counterStore);
 
 | Component              | Description                                                                |
 |------------------------|----------------------------------------------------------------------------|
-| `<DebugShell />`        | Component                            |             |
+| `<DebugShell />`        | Debugging tool for tracking state and events.                              |
 
-### Hooks and Functions
+### Hooks and functions
 
 | API              | Description                                                                                      |
 |------------------|--------------------------------------------------------------------------------------------------|
-| `debug`          | Function for tracking events.
-| `debugStore`     | Function for tracking nanostores.
-| `useDebug`       | Hook for tracking state.                                           |
+| `debug`          | Function for tracking events.                                                                    |
+| `debugStore`     | Function for tracking nanostores.                                                                |
+| `useDebug`       | Hook for tracking state.                                                                         |
+
 ---

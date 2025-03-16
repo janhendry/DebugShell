@@ -1,6 +1,6 @@
 {
 	"name": "debug-shell",
-	"version": "0.0.0-alpha.2.1",
+	"version": "0.0.0-alpha.3.1",
 	"type": "module",
 	"description": "A debugging tool for React applications to track and visualize state and event data",
 	"author": "Jan Anstipp",

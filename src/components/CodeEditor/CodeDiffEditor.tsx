@@ -3,28 +3,18 @@ import type { editor } from "monaco-editor"
 
 import styles from "./CodeEditor.module.scss"
 import type { CodeLanguage } from "./CodeLanguage.js"
-import { DiffEditor, monaco } from "./monaco.js"
+import { DiffEditor } from "./monaco.js"
 
 export type CodeDiffEditorProps = Readonly<{
 	original: string
 	modified: string
 	language?: CodeLanguage
 	className?: string
-	onSave?: (code: string) => void
 	readOnly?: boolean
 	options?: editor.IDiffEditorConstructionOptions
 }>
 
-export default function CodeDiffEditor({ language, className, onSave, original, modified, readOnly = false, options }: CodeDiffEditorProps) {
-	const onMount = (editor: editor.IStandaloneDiffEditor) => {
-		editor.addAction({
-			id: "save",
-			label: "Save",
-			keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS],
-			run: () => onSave?.(editor.getModifiedEditor().getValue()),
-		})
-	}
-
+export default function CodeDiffEditor({ language, className, original, modified, readOnly = false, options }: CodeDiffEditorProps) {
 	return (
 		<div className={classNames(className, styles["code-editor"])}>
 			<DiffEditor
@@ -37,7 +27,6 @@ export default function CodeDiffEditor({ language, className, onSave, original, 
 					},
 					...options,
 				}}
-				onMount={onMount}
 				language={language}
 				theme="vs-dark"
 				original={original}
