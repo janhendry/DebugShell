@@ -1,30 +1,31 @@
-import { useStore } from "@nanostores/react";
-import { List } from "antd";
-import { $debugStoreKeys, $selectedKey, DebugStoreActions } from "./DebugStore";
+import { useStore } from "@nanostores/react"
+import { List } from "antd"
 
-import classNames from "classnames";
-import styles from "./KeyList.module.scss";
+import classNames from "classnames"
+import { $selectedEntry, setSelection } from "../../lib/registry"
+import { $entries } from "../../lib/subscriptions"
+import styles from "./KeyList.module.scss"
 
 export function KeyList() {
-	const debugStoreKeys = useStore($debugStoreKeys);
-	const selectedKey = useStore($selectedKey);
+	const entries = useStore($entries)
+	const selectedEntry = useStore($selectedEntry)
 
 	return (
 		<div>
 			<List
-				dataSource={debugStoreKeys}
-				renderItem={(key) => (
+				dataSource={entries}
+				renderItem={entry => (
 					<List.Item
 						className={classNames({
 							[styles["list-item"]]: true,
-							[styles["list-item-selected"]]: key === selectedKey,
+							[styles["list-item-selected"]]: entry.key === selectedEntry?.key,
 						})}
-						onClick={() => DebugStoreActions.setSelectedKey(key)}
+						onClick={() => setSelection(entry)}
 					>
-						{key}
+						{entry.key}
 					</List.Item>
 				)}
 			/>
 		</div>
-	);
+	)
 }

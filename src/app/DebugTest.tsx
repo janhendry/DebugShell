@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDebugValue } from "../components/DebugShell/DebugStore";
+import { useState } from "react"
+import { useDebug } from "../lib/api"
 
 export function DebugTest() {
 	const [userState] = useState({
@@ -11,9 +11,9 @@ export function DebugTest() {
 		city: "Test City",
 		state: "Test State",
 		zip: "123456",
-	});
+	})
 
-	useDebugValue("userState", userState);
+	useDebug("userState", userState)
 
-	return false;
+	return false
 }

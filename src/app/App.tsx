@@ -1,6 +1,7 @@
-import { DebugShellSidePanel } from "../main";
-import { DebugTest } from "./DebugTest";
-import "./App.css";
+import { DebugShellSidePanel } from "../main"
+import { DebugTest } from "./DebugTest"
+import "./App.css"
+import "./../lib/debug"
 
 function App() {
 	return (
@@ -10,7 +11,7 @@ function App() {
 				<div>App</div>
 			</DebugShellSidePanel>
 		</>
-	);
+	)
 }
 
-export default App;
+export default App
