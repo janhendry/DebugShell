@@ -19,7 +19,7 @@ A debugging tool for Web applications that helps developers easily track and vis
 ## Installation
 
 ```bash
-npm install debug-shell@0.0.0-alpha.3.5
+npm install debug-shell@0.0.0-alpha.3.6 monaco-editor @monaco-editor/react
 ```
 
 ## How to use
