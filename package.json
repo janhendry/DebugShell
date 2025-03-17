@@ -1,6 +1,6 @@
 {
 	"name": "debug-shell",
-	"version": "0.0.0-alpha.3.1",
+	"version": "0.0.0-alpha.3.4",
 	"type": "module",
 	"description": "A debugging tool for React applications to track and visualize state and event data",
 	"author": "Jan Anstipp",
@@ -20,25 +20,27 @@
 		"format": "biome format --write",
 		"check": "biome check --write",
 		"preview": "vite preview",
-		"build": "vite build",
+		"build": "tsc && vite build",
+		"build:testapp": "vite build",
 		"prepublishOnly": "biome check && bun run build",
 		"generate-license": "npx generate-license-file --input package.json --output third-party-licenses.txt --overwrite"
 	},
-	"module": "./dist/main.js",
-	"exports": "./dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
 	"files": ["dist"],
-	"types": "./dist/main.d.ts",
 	"dependencies": {
-		"@monaco-editor/react": "^4.7.0",
 		"@nanostores/persistent": "^0.10.2",
 		"@nanostores/react": "0.8.4",
 		"allotment": "^1.20.3",
 		"antd": "^5.24.3",
 		"classnames": "^2.5.1",
-		"monaco-editor": "0.52.2",
-		"nanostores": "0.11.4",
-		"react": "19.0.0",
-		"react-dom": "19.0.0"
+		"nanostores": "0.11.4"
+	},
+	"peerDependencies": {
+		"@monaco-editor/react": "^4.7.0",
+		"monaco-editor": "^0.52.2",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -49,6 +51,8 @@
 		"generate-license-file": "^3.7.0",
 		"sass": "^1.85.1",
 		"typescript": "5.8.2",
-		"vite": "^6.2.1"
-	}
+		"vite": "^6.2.1",
+		"path": "^0.12.7"
+	},
+	"sideEffects": ["**/*.css"]
 }

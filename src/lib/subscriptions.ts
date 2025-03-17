@@ -39,9 +39,9 @@ export const $entries = computed([$plainValueRegistry, $storeRegistry, $hookRegi
 	return [...valueEntries, ...storeEntries, ...hookEntries].sort((a, b) => a.key.localeCompare(b.key))
 })
 
-export const $selectedPlainValue = computed([$selectedEntry, $plainValueRegistry], (entry, valueRegistry) => {
+export const $selectedPlainValue = computed([$selectedEntry, $plainValueRegistry], (entry, plainValueRegistry) => {
 	if (entry && entry.keyType === "value") {
-		return valueRegistry[entry.key]
+		return plainValueRegistry[entry.key]
 	}
 	return null
 })

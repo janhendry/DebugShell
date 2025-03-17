@@ -2,8 +2,8 @@ import classNames from "classnames"
 import type { editor } from "monaco-editor"
 
 import styles from "./CodeEditor.module.scss"
-import type { CodeLanguage } from "./CodeLanguage.js"
-import { DiffEditor } from "./monaco.js"
+import type { CodeLanguage } from "./CodeLanguage"
+import { DiffEditor } from "./monaco"
 
 export type CodeDiffEditorProps = Readonly<{
 	original: string

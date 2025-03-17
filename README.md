@@ -19,7 +19,7 @@ A debugging tool for Web applications that helps developers easily track and vis
 ## Installation
 
 ```bash
-npm install debug-shell@0.0.0-alpha.3.1
+npm install debug-shell@0.0.0-alpha.3.4
 ```
 
 ## How to use
@@ -115,9 +115,13 @@ The `debugStore` function can be used outside of React components to register na
 import { atom } from 'nanostores';
 import { debugStore } from 'debug-shell';
 
-const counterStore = atom({ count: 0 });
+const counterStore = atom({ count: 0 })
 
-debugStore('counterStore', counterStore);
+debugStore("counterStore", counterStore)
+
+setInterval(() => {
+  counterStore.set({ count: counterStore.get().count + 1 })
+}, 1e3)
 ```
 
 ## API Overview

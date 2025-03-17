@@ -17,7 +17,7 @@ export function StatePreview() {
 				</div>
 			}
 		>
-			<CodeEditor code={value ?? ""} readOnly />
+			<CodeEditor code={value ?? ""} readOnly={false} />
 		</Suspense>
 	)
 }

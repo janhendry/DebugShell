@@ -32,7 +32,7 @@ export function debug(key: string, event: unknown) {
 export function useDebug(key: string, state: unknown) {
 	const selectedEntry = useStore($selectedEntry)
 	useEffect(() => {
-		if (key) {
+		if (key && !$hookRegistry.get().includes(key)) {
 			$hookRegistry.set([...$hookRegistry.get(), key])
 		}
 

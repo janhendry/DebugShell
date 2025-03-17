@@ -1,5 +1,5 @@
 import { Allotment, LayoutPriority } from "allotment"
-import { App as AntdApp, ConfigProvider, Spin, theme } from "antd"
+import { App as AntdApp, ConfigProvider, theme } from "antd"
 import type { ThemeConfig } from "antd"
 import "allotment/dist/style.css"
 import style from "./DebugShell.module.css"

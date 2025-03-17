@@ -19,6 +19,7 @@ export type Entry = {
 export const $plainValueRegistry = deepMap<PlainValueRegistry>({})
 export const $storeRegistry = deepMap<StoreRegistry>({})
 export const $hookRegistry = atom<string[]>([])
+
 export const $selectedEntry = atom<Entry | undefined>(undefined)
 export const $selectedStoreValue = atom<unknown>(null)
 export const $selectedHookValue = atom<unknown>(null)

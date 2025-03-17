@@ -1,8 +1,8 @@
 import classNames from "classnames"
 import type { editor } from "monaco-editor"
 import styles from "./CodeEditor.module.scss"
-import type { CodeLanguage } from "./CodeLanguage.js"
-import { Editor } from "./monaco.js"
+import type { CodeLanguage } from "./CodeLanguage"
+import { Editor } from "./monaco"
 
 export type CodeEditorProps = Readonly<{
 	className?: string
@@ -19,14 +19,13 @@ export default function CodeEditor({ className, code, path, readOnly = false, op
 		<div className={classNames(className, styles["code-editor"])}>
 			<Editor
 				options={{
-					// readOnly,
+					readOnly,
 					minimap: {
 						enabled: true,
 					},
 					...options,
 				}}
 				path={path}
-				// onMount={onMount}
 				language={language}
 				theme="vs-dark"
 				value={code}

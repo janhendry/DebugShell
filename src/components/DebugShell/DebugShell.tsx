@@ -2,9 +2,6 @@ import { Allotment } from "allotment"
 import { DebugShellWidget } from "./DebugShellWidget"
 import { handleResize, useLocalAppState } from "./localAppState"
 
-import "allotment/dist/style.css"
-import "./theme.css"
-
 export type DebugShellProps = {
 	children?: React.ReactNode
 }
@@ -22,7 +19,7 @@ export function DebugShell({ children }: Readonly<DebugShellProps>) {
 	}
 
 	return (
-		<div style={{ display: "flex", height: "100vh", width: "100vw" }}>
+		<div data-debug-shell-theme="dark" style={{ display: "flex", height: "100vh", width: "100vw" }}>
 			<Allotment vertical={false} defaultSizes={sidePanelSize} onDragEnd={handleResize("sidePanel")}>
 				<Allotment.Pane>{children}</Allotment.Pane>
 				<Allotment.Pane preferredSize={200}>{<DebugShellWidget />}</Allotment.Pane>
