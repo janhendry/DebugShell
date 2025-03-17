@@ -19,7 +19,7 @@ A debugging tool for Web applications that helps developers easily track and vis
 ## Installation
 
 ```bash
-npm install debug-shell@0.0.0-alpha.3.4
+npm install debug-shell@0.0.0-alpha.3.5
 ```
 
 ## How to use

@@ -1,6 +1,6 @@
 {
 	"name": "debug-shell",
-	"version": "0.0.0-alpha.3.4",
+	"version": "0.0.0-alpha.3.5",
 	"type": "module",
 	"description": "A debugging tool for React applications to track and visualize state and event data",
 	"author": "Jan Anstipp",
@@ -22,7 +22,7 @@
 		"preview": "vite preview",
 		"build": "tsc && vite build",
 		"build:testapp": "vite build",
-		"prepublishOnly": "biome check && bun run build",
+		"prepublishOnly": "bun run lint && bun run generate-license && bun run build",
 		"generate-license": "npx generate-license-file --input package.json --output third-party-licenses.txt --overwrite"
 	},
 	"main": "dist/main.js",
@@ -39,8 +39,8 @@
 	"peerDependencies": {
 		"@monaco-editor/react": "^4.7.0",
 		"monaco-editor": "^0.52.2",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
