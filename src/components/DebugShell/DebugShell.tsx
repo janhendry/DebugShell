@@ -1,48 +1,29 @@
-import { useStore } from '@nanostores/react'
-import { $selectedValue } from './DebugStore'
-import { KeyList } from './KeyList'
-import { Allotment, LayoutPriority } from 'allotment'
-import { CodeEditor } from '../CodeEditor/CodeEditor'
-import { App as AntdApp, ConfigProvider, theme } from 'antd'
-import type { ThemeConfig } from 'antd'
-import style from './DebugShell.module.css'
-import 'allotment/dist/style.css'
+import { Allotment } from "allotment"
+import { DebugShellWidget } from "./DebugShellWidget"
+import { handleResize, useLocalAppState } from "./localAppState"
 
-const antdThemeConfig: ThemeConfig = {
-  algorithm: theme.darkAlgorithm,
+export type DebugShellProps = {
+	children?: React.ReactNode
 }
 
-export function DebugShell() {
-  const value = useStore($selectedValue)
+/**
+ * Debug shell for debugging state, stores, and events.
+ *
+ * This component is used to render the debug shell. When no children are provided, it will render the debug shell widget. When children are provided, it will render the debug shell as a split view with the children in the main pane.
+ */
+export function DebugShell({ children }: Readonly<DebugShellProps>) {
+	const { sidePanelSize } = useLocalAppState()
 
-  return (
-    <ConfigProvider theme={antdThemeConfig}>
-      <AntdApp
-        className={style.app}
-        style={{
-          height: '100%',
-          width: '100%',
-          flex: 1,
-        }}
-      >
-        <Allotment
-          vertical={false}
-          proportionalLayout={false}
-        >
-          <Allotment.Pane
-            priority={LayoutPriority.Low}
-            preferredSize={200}
-          >
-            <KeyList />
-          </Allotment.Pane>
-          <Allotment.Pane>
-            <CodeEditor
-              code={value}
-              readOnly
-            />
-          </Allotment.Pane>
-        </Allotment>
-      </AntdApp>
-    </ConfigProvider>
-  )
+	if (!children) {
+		return <DebugShellWidget />
+	}
+
+	return (
+		<div data-debug-shell-theme="dark" style={{ display: "flex", height: "100vh", width: "100vw" }}>
+			<Allotment vertical={false} defaultSizes={sidePanelSize} onDragEnd={handleResize("sidePanel")}>
+				<Allotment.Pane>{children}</Allotment.Pane>
+				<Allotment.Pane preferredSize={200}>{<DebugShellWidget />}</Allotment.Pane>
+			</Allotment>
+		</div>
+	)
 }

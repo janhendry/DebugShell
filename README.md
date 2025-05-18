@@ -6,132 +6,138 @@ A debugging tool for Web applications that helps developers easily track and vis
 
 ---
 
-## API Overview
+## Key features
 
-### Components
-
-| Component               | Description       |
-| ----------------------- | ----------------- |
-| `<DebugShell />`        | Component         |
-| `<DebugShellSidePanel>` | Wrapper Component |
-
-### Hooks and Functions
-
-| API             | Description                   |
-| --------------- | ----------------------------- |
-| `useDebugValue` | Hook for tracking state.      |
-| `debugValue`    | Function for tracking events. |
-
----
-
-## How to Use
-
-### Side Panel Integration
-
-Wrap your application with `<DebugShellSidePanel>` to enable the debug shell as side panel:
-
-```tsx
-import React from 'react'
-import { DebugShellSidePanel } from 'debug-shell'
-
-const App = () => {
-  return (
-    <DebugShellSidePanel>
-      <YourApp />
-    </DebugShellSidePanel>
-  )
-}
-```
-
----
-
-### Component Integration
-
-Integrate the `<DebugShell>` as component in your app. You dont need a wrapper component for this:
-
-```tsx
-import React from 'react'
-import { DebugShell } from 'debug-shell'
-
-const App = () => {
-  const userState = {
-    name: 'TestUser',
-    age: 23,
-    email: 'test@test.com',
-  }
-
-  const handleClick = (event) => {
-    debugValue('onClickEvent', event)
-  }
-
-  useDebugValue('userState', userState)
-
-  return (
-    <div>
-      <h1>Welcome to the App</h1>
-      <button onClick={handleClick}>Click Me</button>
-      <DebugShell />
-    </div>
-  )
-}
-```
-
----
-
-### Hook for State Tracking
-
-To monitor state, use the `useDebugValue` hook:
-
-```tsx
-import React from 'react'
-import { useDebugValue } from 'debug-shell'
-
-const MyComponent = () => {
-  const userState = {
-    name: 'TestUser',
-    age: 23,
-    email: 'test@test.com',
-  }
-
-  useDebugValue('userState', userState)
-
-  return <p>Name: {userState.name}</p>
-}
-```
-
----
-
-### Function for Event Tracking
-
-To monitor events, use the `debugValue' function:
-
-```tsx
-import React from 'react'
-import { debugValue } from 'debug-shell'
-
-const MyComponent = () => {
-  const handleClick = (event) => {
-    debugValue('onClickEvent', event)
-    alert('Button clicked!')
-  }
-
-  return <button onClick={handleClick}>Click Me</button>
-}
-```
-
-### **Key Features**
-
-- **State and Event Tracking:**
-  - Use `useDebugValue` to monitor component state.
-  - Use `debugValue` to monitor events.
+- **State and event tracking:**
+  - Use `useDebug` to monitor component state.
+  - Use `debug` to monitor events.
+  - Use `debugStore` to monitor `stores` for [nanostores](https://github.com/nanostores/nanostores).
 - **Developer-Friendly:** Easy to integrate, no changes to your app's structure. No provider or context required.
 
 ---
 
-### **Installation**
+## Installation
 
 ```bash
-npm install debug-shell
+npm install debug-shell@0.0.0-alpha.3.6 monaco-editor @monaco-editor/react
 ```
+
+## How to use
+
+### Side panel integration
+
+Wrap your application with `<DebugShell>` to enable the debug shell as side panel:
+
+```tsx
+import React from 'react';
+import { DebugShell } from 'debug-shell';
+
+function App() {
+  return (
+    <DebugShell>
+      <YourApp />
+    </DebugShell>
+  );
+};
+```
+
+---
+
+### Component integration
+
+Integrate the `<DebugShell>` as component in your app. You can place it anywhere in your app:
+
+```tsx
+import React from 'react';
+import { DebugShell } from 'debug-shell';
+
+function App(){
+
+  return (
+    <div>
+        <YourApp />
+        <YourSidebar >
+          <DebugShell />
+        </YourSidebar>
+    </div>
+  );
+};
+```
+
+---
+
+### `useDebug` for state tracking
+
+To monitor state, use the `useDebug` hook:
+
+```tsx
+import React from 'react';
+import { useDebug } from 'debug-shell';
+
+function MyComponent() {
+  const userState = useState({
+    name: 'TestUser',
+    age: 23,
+    email: 'test@test.com',
+  });
+
+  useDebug('userState', userState);
+
+  return <p>Name: {userState.name}</p>;
+};
+```
+
+---
+
+### `debug` for event tracking
+
+To monitor events, use the `debugValue` function:
+
+```tsx
+import React from 'react';
+import { debug } from 'debug-shell';
+
+function MyComponent() {
+  const handleClick = (event) => {
+    debug('onClickEvent', event);
+    alert('Button clicked!');
+  };
+
+  return <button onClick={handleClick}>Click Me</button>;
+};
+```
+
+### `debugStore` for store tracking from [nanostores](https://github.com/nanostores/nanostores).
+
+The `debugStore` function can be used outside of React components to register nanostores:
+
+```ts
+import { atom } from 'nanostores';
+import { debugStore } from 'debug-shell';
+
+const counterStore = atom({ count: 0 })
+
+debugStore("counterStore", counterStore)
+
+setInterval(() => {
+  counterStore.set({ count: counterStore.get().count + 1 })
+}, 1e3)
+```
+
+## API Overview
+
+### Components
+
+| Component              | Description                                                                |
+|------------------------|----------------------------------------------------------------------------|
+| `<DebugShell />`        | Debugging tool for tracking state and events.                              |
+
+### Hooks and functions
+
+| API              | Description                                                                                      |
+|------------------|--------------------------------------------------------------------------------------------------|
+| `debug`          | Function for tracking events.                                                                    |
+| `debugStore`     | Function for tracking nanostores.                                                                |
+| `useDebug`       | Hook for tracking state.                                                                         |
 
 ---

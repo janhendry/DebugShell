@@ -1,9 +1,10 @@
 {
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript", // Enable .ts
-    "typescriptreact" // Enable .tsx
-  ],
-  "stylelint.validate": ["scss", "css"]
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript", // Enable .ts
+		"typescriptreact" // Enable .tsx
+	],
+	"stylelint.validate": ["scss", "css"],
+	"cSpell.words": ["Anstipp"]
 }
