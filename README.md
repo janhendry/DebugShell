@@ -75,7 +75,7 @@ import React from 'react';
 import { useDebug } from 'debug-shell';
 
 function MyComponent() {
-  const userState = userState({
+  const userState = useState({
     name: 'TestUser',
     age: 23,
     email: 'test@test.com',
@@ -89,7 +89,7 @@ function MyComponent() {
 
 ---
 
-### `debugValue` for event tracking
+### `debug` for event tracking
 
 To monitor events, use the `debugValue` function:
 
